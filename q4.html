@@ -33,37 +33,46 @@
         </header>
 
         <main class="main-content">
-            <div class="button-group">
+            <div class="questionnaire-container">
                 
-                <div class="button-row">
-                    <button class="btn btn-secondary" onclick="window.location.href='allEvents.html'">
-                        See all Events
-                    </button>
+                <div class="progress-indicator">
+                    <div class="progress-circle" onclick="window.location.href='q1.html'">1</div>
+                    <div class="progress-circle" onclick="window.location.href='q2.html'">2</div>
+                    <div class="progress-circle" onclick="window.location.href='q3.html'">3</div>
+                    <div class="progress-circle active" onclick="window.location.href='q4.html'">4</div>
                 </div>
 
-                <div class="button-row">
-                    <button class="btn btn-primary" onclick="window.location.href='q1.html'">
-                        Questionnaire
-                    </button>
+                <h1 class="question-title">How much school work do you have?</h1>
+
+                <div class="work-slider-container">
+                    <div class="work-icons">
+                        <!-- Don't mind this... just wanted to fill something in -->
+                        <span class="work-icon">🤤</span>
+                        <span class="work-icon">😅</span>
+                        <span class="work-icon">🫡</span>
+                        <span class="work-icon">🥲</span>
+                        <span class="work-icon">😭</span>
+                    </div>
+                    <div class="slider-scale">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                    </div>
+                    <input type="range" min="1" max="5" value="3" class="work-slider" id="workSlider">
                 </div>
 
-                <div class="button-row">
-                    <button class="btn btn-secondary" onclick="window.location.href='addEvent.html'">
-                        Add Event
+                <div class="nav-buttons">
+                    <button class="btn-nav btn-previous" onclick="window.location.href='q3.html'">
+                        Previous
+                    </button>
+                    <button class="btn-nav btn-next" onclick="window.location.href='allEvents.html'">
+                        Next
                     </button>
                 </div>
-
             </div>
         </main>
-
-        <footer class="footer">
-            <button class="btn-past-events" onclick="window.location.href='pastEvents.html'">
-                Past Events
-            </button>
-            <div class="footer-note">
-                Forgot where you've been? We got you covered!
-            </div>
-        </footer>
     </div>
 
     <script>
