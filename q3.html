@@ -33,36 +33,29 @@
         </header>
 
         <main class="main-content">
-            <div class="button-group">
-                
-                <div class="button-row">
-                    <button class="btn btn-secondary" onclick="window.location.href='allEvents.html'">
-                        See all Events
+            <div class="questionnaire-container">
+                    <div class="progress-indicator">
+                    <div class="progress-circle" onclick="window.location.href='q1.html'">1</div>
+                    <div class="progress-circle" onclick="window.location.href='q2.html'">2</div>
+                    <div class="progress-circle active" onclick="window.location.href='q3.html'">3</div>
+                    <div class="progress-circle" onclick="window.location.href='q4.html'">4</div>
+                </div>
+                <h1 class="question-title">How tired are you?</h1>
+
+                <div class="nav-buttons">
+                    <button class="btn-nav btn-previous" onclick="window.location.href='q2.html'">
+                        Previous
+                    </button>
+                    <button class="btn-nav btn-next" onclick="window.location.href='q4.html'">
+                        Next
                     </button>
                 </div>
-
-                <div class="button-row">
-                    <button class="btn btn-primary" onclick="window.location.href='q1.html'">
-                        Questionnaire
-                    </button>
-                </div>
-
-                <div class="button-row">
-                    <button class="btn btn-secondary" onclick="window.location.href='addEvent.html'">
-                        Add Event
-                    </button>
-                </div>
-
             </div>
         </main>
 
+
         <footer class="footer">
-            <button class="btn-past-events" onclick="window.location.href='pastEvents.html'">
-                Past Events
-            </button>
-            <div class="footer-note">
-                Forgot where you've been? We got you covered!
-            </div>
+
         </footer>
     </div>
 
