@@ -175,11 +175,12 @@ body {
 
 /* ===== MAIN CONTENT - WHITE BACKGROUND ===== */
 .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px); /* leave space for header + footer */
     background-color: #ffffff; /* White content area */
-    display: grid;
-    place-items: center;
     padding: 60px 40px;
-    min-height: 500px;
 }
 
 /* ===== BUTTON GROUP ===== */
@@ -250,36 +251,7 @@ body {
     background: #0081d5;
 }
 
-/* ===== FOOTER - LIGHT TAN BACKGROUND ===== */
-.footer {
-    background-color: #e8dcc8; /* Light tan (same as body) */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 30px 40px;
-    gap: 10px;
-}
 
-.btn-past-events {
-    padding: 15px 30px;
-    background: #6b4423; /* Brown */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.btn-past-events:hover {
-    background: #8b5a2b;
-}
-
-.footer-note {
-    font-size: 0.875rem;
-    color: #666;
-    font-style: italic;
-}
 
 /* ===== ADD EVENT PAGE ===== */
 .page-title {
@@ -394,70 +366,6 @@ body {
     border-bottom: none;
 }
 
-/* ===== QUESTIONNAIRE PAGES ===== */
-.questionnaire-container {
-    width: 100%;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-}
-
-/* ===== PROGRESS INDICATOR ===== */
-.progress-indicator {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.progress-circle {
-    width: 50px;
-    height: 50px;
-    border: 3px solid #006eb5; /* Blue border */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #006eb5;
-    background: white;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.progress-circle:hover {
-    transform: scale(1.1);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-/* Active circle (current question) */
-.progress-circle.active {
-    border-width: 4px;
-    border-color: #ffb81c; /* Gold border for current */
-    color: #ffb81c;
-    font-weight: bold;
-}
-
-/* Completed circle (answered questions) */
-.progress-circle.completed {
-    background: #b3d9ff; /* Light blue fill */
-    color: #006eb5;
-    border-color: #006eb5;
-}
-
-.progress-circle.completed:hover {
-    background: #99ccff;
-}
-
-.question-title {
-    font-size: 2rem;
-    color: #333;
-    text-align: center;
-    margin-bottom: 10px;
-}
 
 .question-subtitle {
     font-size: 1rem;
@@ -466,43 +374,73 @@ body {
     font-style: italic;
 }
 
-/* ===== WORK SLIDER (Q4 - How Much Work) ===== */
-.work-slider-container {
-    background: #fff59d;
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
-    max-width: 500px;
-    width: 100%;
-}
 
-.work-icons {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-}
-
-.work-icon {
+/* Container for the question box */
+.questionnaire-container {
+    position: relative; /* This makes the questionnaire
+    the main reference point*/
+    width: 1100px;       /* fixed width */
+    height: 700px;      /* fixed height */
+    background-color: #f8f8f8;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 80px 40px 80px; /* space for content inside */
     text-align: center;
-}
-
-.slider-scale {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #333;
+    flex-direction: column;
+    align-items: center; /* horizontal centering */
+    justify-content: center; /* vertical centering */
 }
 
-.work-slider {
-    width: 100%;
-    height: 8px;
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
+.question-title{
+    position: absolute;
+    top: 80px; /* distance from top of container */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
 }
+
+/* Circles container (top navigation) */
+.progress-indicator {
+    position: absolute;
+    top: 20px; /* distance from top of container */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+}
+
+/* Each circle */
+.progress-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.progress-circle.active {
+    background-color: #6b4423;
+    border: 3px solid #006eb5; /* Blue border */
+    color: white;
+}
+
+.progress-circle.active:hover {
+    background-color: #6b4423;
+    border: 3px solid #006eb5; /* Blue border */
+    color: white;
+}
+
+.progress-circle:hover {
+    background-color: #ffb81c;
+}
+
 
 /* ===== NAVIGATION BUTTONS ===== */
 .nav-buttons {
@@ -551,6 +489,45 @@ body {
     background: #ffb81c;
     border-color: black;
 }
+
+/* ===== WORK SLIDER (Q4 - How Much Work) ===== */
+.work-slider-container {
+    background: #fff59d;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+    max-width: 500px;
+    width: 100%;
+}
+
+.work-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.work-icon {
+    text-align: center;
+}
+
+.slider-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.work-slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
 
 /* ===== RESULTS PAGE ===== */
 .results-container {
@@ -805,10 +782,15 @@ body {
 
 /* ===== FOOTER ===== */
 .footer {
+    position: absolute; /* or fixed, if you want it to stay visible while scrolling */
+    top: calc(100vh - 125px); /* 200px is the distance from the bottom to the top of the footer */
+    bottom: 0;
+    width: 100%;
+    background-color: #e8dcc8;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px 40px;
+    padding: 30px 40px;
     gap: 10px;
 }
 
@@ -987,66 +969,3 @@ body {
     }
 }
 
-/* Container for the question box */
-.questionnaire-container {
-    position: relative;
-    width: 1100px;       /* fixed width */
-    height: 700px;      /* fixed height */
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #f8f8f8;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    padding: 80px 40px 80px; /* space for content inside */
-    text-align: center;
-}
-
-/* Circles container (top navigation) */
-.progress-indicator {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
-}
-
-/* Each circle */
-.progress-circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.progress-circle.active {
-    background-color: #6b4423;
-    border: 3px solid #006eb5; /* Blue border */
-    color: white;
-}
-
-.progress-circle.active:hover {
-    background-color: #6b4423;
-    border: 3px solid #006eb5; /* Blue border */
-    color: white;
-}
-
-.progress-circle:hover {
-    background-color: #ffb81c;
-}
-
-/* Question text */
-.question-title {
-    margin-top: 40px; /* spacing from circles */
-    font-size: 1.8rem;
-    color: #333;
-}
